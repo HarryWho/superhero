@@ -1,0 +1,29 @@
+{
+  "name": "superhero",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarryWho/superhero.git"
+  },
+  "author": "Calvin Bartlett",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HarryWho/superhero/issues"
+  },
+  "homepage": "https://github.com/HarryWho/superhero#readme",
+  "dependencies": {
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.2.10",
+    "passport": "^0.5.2",
+    "passport-local": "^1.0.0"
+  }
+}
