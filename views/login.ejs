@@ -1,21 +1,23 @@
 <div class="col-md-4 mx-auto mt-5">
-  <div class="form-group">
-    <fieldset>
-      <label class="form-label" for="email">Email</label>
-      <input class="form-control" id="email" name="email" type="email" placeholder="Email...">
-    </fieldset>
-  </div>
+  <form action="/" method="POST">
+    <div class="form-group">
+      <fieldset>
+        <label class="form-label" for="email">Email</label>
+        <input class="form-control" id="email" name="email" type="email" placeholder="Email...">
+      </fieldset>
+    </div>
 
-  <div class="form-group">
-    <fieldset>
-      <label class="form-label mt-4" for="password">Password</label>
-      <input class="form-control" id="password" type="password" placeholder="Password...">
-    </fieldset>
-  </div>
-  <div class="form-group mt-4">
-    <fieldset>
-      <button type="submit" class="btn btn-primary">Login</button>
-      <span class="pull-right">Dont have an account? <a href="/register">Register</a></span>
-    </fieldset>
-  </div>
+    <div class="form-group">
+      <fieldset>
+        <label class="form-label mt-4" for="password">Password</label>
+        <input class="form-control" id="password" name="password" type="password" placeholder="Password...">
+      </fieldset>
+    </div>
+    <div class="form-group mt-4">
+      <fieldset>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <span class="pull-right">Dont have an account? <a href="/register">Register</a></span>
+      </fieldset>
+    </div>
+  </form>
 </div>
