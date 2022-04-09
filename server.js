@@ -19,10 +19,11 @@ app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
 
 // view engine setup
+app.use(expressLayout)
 app.set('view engine', 'ejs')
 app.set('layout', 'layouts/layout')
-app.use(expressLayout)
-
+app.set("layout extractScripts", true)
+app.set("layout extractStyles", true)
 
 // session
 app.use(session({
@@ -39,6 +40,7 @@ const { ensureAuth, ensureGuest } = require('./middleware/authentication')
 
 app.use('/', require('./controllers/home'))
 app.use('/dashboard', ensureAuth, require('./controllers/loggedin/dashboard'))
+app.use('/article', ensureAuth, require('./controllers/loggedin/article'))
 
 
 
