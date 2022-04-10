@@ -1,0 +1,17 @@
+<div class="col-lg-6 mx-auto text-light my-5">
+  <form action="/task" method="post">
+    <div class="form-group">
+      <label for="task" class="form-label text-dark">Task</label>
+      <input type="text" class="form-control" name="task" id="task">
+    </div>
+    <div class="form-group">
+      <label for="duedate" class="form-label text-dark">Due Date</label>
+      <input type="date" name="duedate" class="form-control" id="duedate">
+    </div>
+    <input type="hidden" name="user" value="<%=user._id%>">
+    <div class="form-group mt-3">
+      <button type="submit" class="btn btn-primary btn-sm">Save</button>
+      <a href="/dashboard" class="btn btn-info btn-sm">Cancel</a>
+    </div>
+  </form>
+</div>

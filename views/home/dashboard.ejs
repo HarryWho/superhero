@@ -6,6 +6,30 @@
         <h5 class="card-title">Tasks</h5>
       </div>
       <div class="card-body">
+        <% if (typeof tasks!='undefined'&&tasks.length>0){%>
+          <div class="list-group position-relative">
+            <% tasks.forEach(task=>{%>
+              <div class="list-group-item list-group-item-action flex-column align-items-start active mb-2">
+                <div class="d-flex w-100 justify-content-between">
+                  <h6 class="mb-1">
+                    <%=task.task%>
+                  </h6>
+                </div>
+                <small>Due: <%- formatDate(task.duedate, 'MMMM Do YYYY') %></small>
+                <div class="progress">
+                  <div class="progress-bar <%- getPercentage(task.startdate, task.duedate) >=90 ? 'bg-danger': 'bg-success'%>" role="progressbar" style='width: <%- getPercentage(task.startdate, task.duedate)%>%;' aria-valuenow="<%- getPercentage(task.startdate, task.duedate)%>"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                Due in
+                <%- dateDifference(task.duedate) %>
+                  <form action="/task/<%=task._id%>?_method=DELETE" method="post">
+                    <button type="submit" class="btn btn-danger btn-sm rounded-circle position-absolute top-0 end-0 shadow  "><i class="bi bi-trash"></i></button>
+                  </form>
+              </div>
+              <%})%>
+          </div>
+
+          <%}%>
       </div>
     </div>
   </div>

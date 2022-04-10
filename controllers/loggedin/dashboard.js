@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const Article = require('../../models/ArticleModel')
+const Task = require('../../models/TaskModel')
   /**DESC: loged in dashboard 
    * GET: '/dashboard'
    */
@@ -10,7 +11,8 @@ router.get('/', async(req, res) => {
       path: 'likes',
       select: ['username', 'image']
     });
-  res.render('home/dashboard', { user: req.user, articles: articles });
+  const tasks = await Task.find({ user: req.user._id }).sort({ startdate: 'desc' });
+  res.render('home/dashboard', { user: req.user, articles: articles, tasks: tasks });
 });
 
 
