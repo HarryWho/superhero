@@ -1,7 +1,5 @@
 const config = require('dotenv')
 config.config({ path: './config/config.env' })
-
-
 const express = require('express')
 const http = require('http')
 const { ConnectDB } = require('./config/DB')
@@ -9,6 +7,7 @@ const expressLayout = require('express-ejs-layouts')
 const session = require('express-session')
 const passport = require('passport')
 const MongoStore = require('connect-mongo');
+const methodOverride = require('method-override')
 const app = express()
 const server = http.createServer(app)
 
@@ -17,6 +16,9 @@ app.use(express.urlencoded({ extended: false }))
 
 // set static public folder
 app.use(express.static('public'))
+
+// method override
+app.use(methodOverride('_method'))
 
 // view engine setup
 app.use(expressLayout)
@@ -35,6 +37,15 @@ app.use(session({
   // passport initialize
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+// global functions
+const { formatDate } = require('./middleware/format')
+app.use((req, res, next) => {
+  res.locals.formatDate = formatDate;
+
+  next()
+})
 
 const { ensureAuth, ensureGuest } = require('./middleware/authentication')
 

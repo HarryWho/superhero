@@ -5,7 +5,7 @@ const Article = require('../../models/ArticleModel')
    * GET: '/dashboard'
    */
 router.get('/', async(req, res) => {
-  const articles = await Article.find({ author: req.user._id })
+  const articles = await Article.find({ author: req.user._id }).sort({ date: 'desc' })
     .populate({
       path: 'likes',
       select: ['username', 'image']
