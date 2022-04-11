@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-lg-8 mx-auto">
+    <% if(typeof articles!='undefined'&&articles.length>0){%>
+      <% articles.forEach(article=>{%>
+        <div class="card my-3 bg-light text-dark">
+          <div class="card-header position-relative">
+            <img src="<%=article.author.image%>" alt="Authors Image" class="rounded-circle" width="32px">
+            <%=article.author.username%>
+              <span class="position-absolute top-50 end-0 translate-middle">
+                Posted: <%- formatDate(article.date, 'MMMM Do YYYY') %></span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%=article.title%>
+            </h5>
+            <%- truncate(stripTags(article.article), 300)%> <a href="/blog/view/<%=article._id%>">Read More</a>
+          </div>
+          <div class="card-footer position-relative">
+
+            <span class="position-absolute top-50 end-50 translate-middle">Likes 
+                (<%=article.likes.length%>)</span>
+            <span class="position-absolute top-50 end-0 translate-middle">Comments 
+                  (<%=article.comments.length%>)</span>
+          </div>
+        </div>
+        <%})%>
+          <%}%>
+  </div>
+</div>

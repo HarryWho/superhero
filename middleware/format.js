@@ -15,9 +15,17 @@ module.exports = {
     const fulldays = moment(startDate).diff(dueDate, 'days')
     const difference = dateNow.diff(dueDate, 'days')
 
-    console.log(-difference / (-fulldays) * 100)
     if (difference == 0) return 100
-    return 100 - Math.round(-difference / (-fulldays) * 100)
+    return ((fulldays) / (difference) * 100) - 100
 
+  },
+  truncate: function(str, len) {
+    if (str.length <= len) return str;
+    let subStr = str.substring(0, len)
+    subStr = subStr.substring(0, subStr.lastIndexOf(' '))
+    return subStr + "...";
+  },
+  stripTags: function(html) {
+    return html.replace(/<[^>]+>/g, '');
   }
 }

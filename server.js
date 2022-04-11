@@ -40,11 +40,13 @@ app.use(passport.session());
 
 
 // global functions
-const { formatDate, dateDifference, getPercentage } = require('./middleware/format')
+const { formatDate, dateDifference, getPercentage, truncate, stripTags } = require('./middleware/format')
 app.use((req, res, next) => {
   res.locals.formatDate = formatDate;
   res.locals.dateDifference = dateDifference;
   res.locals.getPercentage = getPercentage;
+  res.locals.truncate = truncate;
+  res.locals.stripTags = stripTags;
 
   next()
 })
@@ -55,6 +57,7 @@ app.use('/', require('./controllers/home'))
 app.use('/dashboard', ensureAuth, require('./controllers/loggedin/dashboard'))
 app.use('/article', ensureAuth, require('./controllers/loggedin/article'))
 app.use('/task', ensureAuth, require('./controllers/loggedin/task'))
+app.use('/blog', ensureAuth, require('./controllers/loggedin/blog'))
 
 
 
